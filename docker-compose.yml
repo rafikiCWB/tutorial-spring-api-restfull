@@ -1,0 +1,13 @@
+
+
+services:
+  postgres:
+    image: 'postgres:latest'
+    volumes:
+      - C:\Users\rafae\backupdatabase\postgreSQL:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1020
+      - POSTGRES_DB=database_JAVA
+    ports:
+      - '8005:5432'
