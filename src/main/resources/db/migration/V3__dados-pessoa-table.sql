@@ -1,0 +1,1 @@
+INSERT INTO funcionario(nome, papel) values ('Rafinha','Desenvolvedor');

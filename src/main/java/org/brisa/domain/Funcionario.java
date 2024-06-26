@@ -1,14 +1,12 @@
 package org.brisa.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 import java.util.UUID;
 
 @Entity
+@Table(name = "funcionario")
 public class Funcionario {
 
     @Id
@@ -24,7 +22,6 @@ public class Funcionario {
         this.nome = nome;
         this.papel = papel;
     }
-
 
     public UUID getId() {
         return this.id;
