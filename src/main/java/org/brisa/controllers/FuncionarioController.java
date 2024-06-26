@@ -6,6 +6,7 @@ import org.brisa.repositories.FuncionarioRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class FuncionarioController {
@@ -28,13 +29,13 @@ public class FuncionarioController {
     }
 
     @GetMapping("/funcionarios/{id}")
-    Funcionario one(@PathVariable Long id) {
+    Funcionario one(@PathVariable UUID id) {
         return repository.findById(id)
                 .orElseThrow(() -> new FuncionarioNotFoundException(id));
     }
 
     @PutMapping("/funcionarios/{id}")
-    Funcionario substituirFuncionario(@RequestBody Funcionario novoFuncionario, @PathVariable Long id) {
+    Funcionario substituirFuncionario(@RequestBody Funcionario novoFuncionario, @PathVariable UUID id) {
         return repository.findById(id)
                 .stream().map(funcionarioAtual -> {
                     funcionarioAtual.setNome(novoFuncionario.getNome());
@@ -48,7 +49,7 @@ public class FuncionarioController {
     }
 
     @DeleteMapping("/funcionarios/{id}")
-    void deleteFuncionario(@PathVariable Long id) {
+    void deleteFuncionario(@PathVariable UUID id) {
         if (!repository.existsById(id)) {
             throw new FuncionarioNotFoundException(id);
         }

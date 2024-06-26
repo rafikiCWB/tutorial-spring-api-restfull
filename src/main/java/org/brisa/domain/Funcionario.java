@@ -2,16 +2,18 @@ package org.brisa.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 public class Funcionario {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     private String nome;
     private String papel;
 
@@ -24,11 +26,11 @@ public class Funcionario {
     }
 
 
-    public Long getId() {
+    public UUID getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
