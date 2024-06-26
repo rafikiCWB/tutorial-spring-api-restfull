@@ -1,0 +1,39 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+###
+
+###
+GET http://localhost:8080/funcionarios
+
+###
+
+###
+POST http://localhost:8080/funcionarios
+Content-Type: application/json
+
+{
+  "id": 4,
+  "nome": "sr R",
+  "papel": "Artista"
+}
+
+###
+
+###
+PUT http://localhost:8080/funcionarios/3
+Content-Type: application/json
+
+{
+  "id": 3,
+  "nome": "sr Rafinha",
+  "papel": "desenvolvedor"
+}
+
+###
+
+###
+DELETE http://localhost:8080/funcionarios/3
+
+###
