@@ -5,7 +5,7 @@ GET https://examples.http-client.intellij.net/get
 ###
 
 ###
-GET http://localhost:8080/funcionarios
+GET http://localhost:8080/funcionarios/4dc90e56-230c-47c5-a70f-39532fcf1f4a
 
 ###
 
@@ -14,7 +14,6 @@ POST http://localhost:8080/funcionarios
 Content-Type: application/json
 
 {
-  "id": 4,
   "nome": "sr R",
   "papel": "Artista"
 }
@@ -22,11 +21,10 @@ Content-Type: application/json
 ###
 
 ###
-PUT http://localhost:8080/funcionarios/3
+PUT http://localhost:8080/funcionarios/4dc90e56-230c-47c5-a70f-39532fcf1f4a
 Content-Type: application/json
 
 {
-  "id": 3,
   "nome": "sr Rafinha",
   "papel": "desenvolvedor"
 }
