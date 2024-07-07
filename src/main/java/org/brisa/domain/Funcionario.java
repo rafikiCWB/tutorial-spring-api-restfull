@@ -13,6 +13,7 @@ public class Funcionario {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String nome;
+    private String sobrenome;
     private String papel;
 
     public Funcionario() {
@@ -20,6 +21,12 @@ public class Funcionario {
 
     public Funcionario(String nome, String papel) {
         this.nome = nome;
+        this.papel = papel;
+    }
+
+    public Funcionario(String nome, String sobrenome, String papel) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
         this.papel = papel;
     }
 
@@ -39,6 +46,14 @@ public class Funcionario {
         this.nome = nome;
     }
 
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
     public String getPapel() {
         return papel;
     }
@@ -54,17 +69,21 @@ public class Funcionario {
         if (!(o instanceof Funcionario))
             return false;
         Funcionario funcionario = (Funcionario) o;
-        return Objects.equals(this.id, funcionario.id) && Objects.equals(this.nome, funcionario.nome) && Objects.equals(this.papel, funcionario.papel);
+        return Objects.equals(this.id, funcionario.id)
+                && Objects.equals(this.nome, funcionario.nome)
+                && Objects.equals(this.sobrenome, funcionario.sobrenome)
+                && Objects.equals(this.papel, funcionario.papel);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.nome, this.papel);
+        return Objects.hash(this.id, this.nome, this.sobrenome, this.papel);
     }
 
     @Override
     public String toString() {
-        return "Employee{" + "id=" + this.id + ", name='" + this.nome + '\'' + ", role='" + this.papel + '\'' + '}';
+        return "Employee{" + "id=" + this.id + ", firstName='" + this.nome + '\'' + ", lastName='" + this.sobrenome
+                + '\'' + ", role='" + this.papel + '\'' + '}';
     }
 
 }
