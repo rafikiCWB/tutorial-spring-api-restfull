@@ -14,10 +14,18 @@ public class LoadDatabase {
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
     @Bean
-    CommandLineRunner IniciarBancoDeDados(FuncionarioRepository repository) {
+    CommandLineRunner iniciarBancoDeDados(FuncionarioRepository repository) {
         return args -> {
-            log.info("PreCarregamento" + repository.save(new Funcionario("Bilbo Baggins", "Burglar")));
-            log.info("PreCarregamento" + repository.save(new Funcionario("Frodo Baggins", "thief")));
+            if (repository.findByNome("Frodo Baggins") == null) {
+                Funcionario frodo = new Funcionario("Frodo Baggins", "thief");
+                Funcionario savedFrodo = repository.save(frodo);
+                log.info("PreCarregamento {}", savedFrodo);
+            }
+            if (repository.findByNome("Bilbo Baggins") == null) {
+                Funcionario bilbo = new Funcionario("Bilbo Baggins", "Burglar");
+                Funcionario savedBilbo = repository.save(bilbo);
+                log.info("PreCarregamento {}", savedBilbo);
+            }
         };
     }
 
