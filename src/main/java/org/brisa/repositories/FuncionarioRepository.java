@@ -7,4 +7,6 @@ import java.util.UUID;
 
 public interface FuncionarioRepository extends JpaRepository<Funcionario, UUID> {
 
+    Funcionario findByNome(String nome);
+
 }
