@@ -19,15 +19,20 @@ public class Funcionario {
     public Funcionario() {
     }
 
-    public Funcionario(String nome, String papel) {
-        this.nome = nome;
-        this.papel = papel;
-    }
-
     public Funcionario(String nome, String sobrenome, String papel) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.papel = papel;
+    }
+
+    public String getFullname() {
+        return this.nome + " " + this.sobrenome;
+    }
+
+    public void setFullname(String nome) {
+        String[] parts = nome.split(" ");
+        this.nome = parts[0];
+        this.sobrenome = parts[1];
     }
 
     public UUID getId() {
