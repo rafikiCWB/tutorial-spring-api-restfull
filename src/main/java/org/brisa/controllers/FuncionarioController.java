@@ -15,6 +15,7 @@ import java.util.UUID;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 @RestController
+@RequestMapping("/api")
 public class FuncionarioController {
 
     private final FuncionarioRepository repository;
