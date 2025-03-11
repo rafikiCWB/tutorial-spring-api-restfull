@@ -1,5 +1,7 @@
 package org.brisa.controllers;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.brisa.domain.Order;
 import org.brisa.domain.Status;
 import org.brisa.exceptions.OrderNotFoundException;
@@ -20,6 +22,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
+@RequestMapping("/api")
+@Api(value = "Exemplo de API", description = "API para demonstração do Swagger")
 public class OrderController {
 
     private final OrderRepository orderRepository;
@@ -36,7 +40,7 @@ public class OrderController {
      * @return A CollectionModel of EntityModel of Order, representing all orders with their associated links.
      */
     @GetMapping("/orders")
-    CollectionModel<EntityModel<Order>> all() {
+     CollectionModel<EntityModel<Order>> all() {
         List<EntityModel<Order>> orders = orderRepository.findAll().stream()
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
@@ -98,5 +102,11 @@ public class OrderController {
                 .orElseThrow(() -> new OrderNotFoundException(id));
         order.setStatus(Status.IN_PROGRESS);
         return ResponseEntity.ok(assembler.toModel(orderRepository.save(order)).getContent());
+    }
+
+    @GetMapping("/hello")
+    @ApiOperation(value = "Saudação", notes = "Retorna uma saudação simples.")
+    public String hello() {
+        return "Olá, mundo!!";
     }
 }
